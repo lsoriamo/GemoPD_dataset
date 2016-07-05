@@ -10,6 +10,7 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 /**
  * Created by LuisMiguel on 24/06/2016.
  */
+// Entry point to the application. In charge of launching the Service
 public class GemoApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
