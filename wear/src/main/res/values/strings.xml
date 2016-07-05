@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">Gemo-PD</string>
+    <string name="welcome">IBiS/US Gemo-PD</string>
+    <string name="pref_autosync">Sincronización automática</string>
+    <string name="start">Lanzar captura</string>
+    <string name="stop">Detener captura</string>
+    <string name="click_again">Pulse de nuevo para detener</string>
+    <string name="running">Obteniendo datos del paciente...</string>
+    <string name="pageMainTitle">Captura</string>
+    <string name="pageMainConfig">Ajustes</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="pref_connected">Conectado.</string>
+    <string name="pref_not_connected">Desconectado.</string>
+    <string name="patient_id">Id paciente</string>
+    <string name="record_sync">Sesión sincronizada</string>
+    <string name="researcher_id">Id investigador</string>
+    <string name="open_on_phone_description">La información obenida se almacenerá en el disitivo móvil. Puede ver todos los registros en la aplicación para Android.</string>
+    <string name="open_on_phone_action">Abrir Gemo-PD en el dispositivo</string>
+    <string name="session_sync">Sesión sincronizada</string>
+    <string name="new_event_received_view">Se ha capturado un evento.</string>
+
+    <string name="delayed_start_text">Iniciando la sesión...</string>
+    <string name="delayed_started">Sesión iniciada</string>
+    <string name="delayed_cancelled">Sesión cancelada</string>
+
+    <string name="record_list_adapter_sessions">sesiones</string>
+    <string name="record_list_header">Sesiones</string>
+
+    <string name="date_format_card">dd/M/yyyy HH:mm:ss</string>
+
+    <string name="record_detail_patient_id">Id del paciente</string>
+    <string name="record_detail_researcher_id">Id del investigador</string>
+    <string name="record_detail_start_time">Fecha de toma de datos</string>
+    <string name="record_detail_data_size">Número de datos tomados</string>
+
+    <string name="preferences_category_user">user_preferences</string>
+    <string name="preferences_saved_autosync">saved_autosync</string>
+    <string name="preferences_saved_autosyncfreq">saved_autosyncfreq</string>
+    <string name="preferences_saved_username">saved_username</string>
+    <string name="preferences_saved_researcher">saved_researcher</string>
+    <string name="preferences_saved_description">saved_description</string>
+    <string name="preferences_saved_location">saved_location</string>
+
+    <string name="title_activity_record_list">RecordListActivity</string>
+    <string name="title_activity_record_detail_list">RecordDetailListActivity</string>
+    <string name="path_prefix">/wear</string>
+    <string name="event_value_prefix">event_caught</string>
+
+    <string name="launch_app_wear">/launch-app-wear</string>
+    <string name="launch_app_wear_ack">/launch-app-wear-ack</string>
+    <string name="launch_app_phone">/launch-app-phone</string>
+    <string name="launch_app_phone_ack">/launch-app-phone-ack</string>
+    <string name="session_started">/started</string>
+    <string name="session_started_ack">/started-ack</string>
+    <string name="session_stopped">/stopped</string>
+    <string name="session_stopped_ack">/stopped-ack</string>
+    <string name="start_session_local">/start-session-local</string>
+    <string name="start_session_local_ack">/start-session-local-ack</string>
+    <string name="stop_session_local">/stop-session-local</string>
+    <string name="stop_session_local_ack">/stop-session-local-ack</string>
+    <string name="record_data_map">/record-data-map</string>
+    <string name="record_data_map_ack">/record-data-map-ack</string>
+    <string name="session_file">/session-file</string>
+    <string name="session_file_ack">/session-file-ack</string>
+    <string name="session_file_asset">/session-file-asset</string>
+    <string name="session_file_name">/session-file-name</string>
+    <string name="preferences_changed">/preferences-changed</string>
+    <string name="preferences_changed_ack">/preferences-changed-ack</string>
+    <string name="get_state">/get-state</string>
+    <string name="get_state_response">/get-state-response</string>
+    <string name="state_running">running</string>
+    <string name="state_stopped">stopped</string>
+    <string name="new_event_received">/new-event-received</string>
+    <string name="new_event_received_ack">/new-event-received_ack</string>
+    <string name="delimiter">;_;</string>
+    <string name="temp_file_extension">dat</string>
+    <string name="device_not_connected">Dispositivo no conectado.</string>
+</resources>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:background="@color/card_default_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity"
+    tools:deviceIds="wear">
+
+    <LinearLayout
+        android:id="@+id/configLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_box="all">
+
+        <Switch
+            android:id="@+id/switchAutoSync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/pref_autosync" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="7dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/patient_id"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/patientId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="4"
+                android:hint="@string/patient_id"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:inputType="textPersonName" />
+
+
+            <ImageView
+                android:id="@+id/speechPatient"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/microphone" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="7dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/researcher_id"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/researcherId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:hint="@string/researcher_id"
+                android:inputType="textPersonName" />
+
+            <ImageView
+                android:id="@+id/speechResearcher"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/microphone" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/connectionState"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal|bottom"
+            android:text="@string/pref_connected"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/green" />
+
+
+    </LinearLayout>
+
+</android.support.wearable.view.BoxInsetLayout>

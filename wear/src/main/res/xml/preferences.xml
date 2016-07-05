@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/preferences_category_user" >
+        <EditTextPreference
+            android:title="@string/preferences_saved_username"
+            android:summary="@string/preferences_saved_username"
+            android:defaultValue="Anonymous"
+            android:key="@string/preferences_saved_username"/>
+
+        <EditTextPreference
+            android:title="@string/preferences_saved_researcher"
+            android:summary="@string/preferences_saved_researcher"
+            android:defaultValue="Anonymous"
+            android:key="@string/preferences_saved_researcher"/>
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/preferences_saved_autosync"
+            android:summary="@string/preferences_saved_autosync"
+            android:title="@string/preferences_saved_autosync" />
+
+        <es.us.investigacion.parkinson.utils.IntEditTextPreference
+            android:title="@string/preferences_saved_autosyncfreq"
+            android:summary="@string/preferences_saved_autosyncfreq"
+            android:defaultValue="15000"
+            android:key="@string/preferences_saved_autosyncfreq"/>
+
+        <EditTextPreference
+            android:title="@string/preferences_saved_description"
+            android:summary="@string/preferences_saved_description"
+            android:defaultValue="Default"
+            android:key="@string/preferences_saved_description"/>
+
+        <EditTextPreference
+            android:title="@string/preferences_saved_location"
+            android:summary="@string/preferences_saved_location"
+            android:defaultValue="Default"
+            android:key="@string/preferences_saved_location"/>
+    </PreferenceCategory>
+</PreferenceScreen>

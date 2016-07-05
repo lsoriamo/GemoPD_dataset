@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="event_types">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="event_names">
+        <item>On</item>
+        <item>Off</item>
+        <item>Discinesia</item>
+        <item>Esencial</item>
+        <item>Otro</item>
+    </string-array>
+</resources>

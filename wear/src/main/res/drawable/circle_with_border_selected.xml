@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape
+            android:innerRadius="34dp"
+            android:shape="ring"
+            android:thicknessRatio="4"
+            android:useLevel="false">
+            <gradient
+                android:centerColor="@android:color/holo_blue_dark"
+                android:centerY="0.50"
+                android:endColor="@color/circular_button_pressed"
+                android:startColor="@color/circular_button_pressed"
+                android:type="sweep" />
+
+            <gradient
+                android:centerColor="@android:color/holo_blue_dark"
+                android:centerY="0.50"
+                android:endColor="@color/circular_button_pressed"
+                android:startColor="@color/circular_button_pressed"
+                android:type="sweep" />
+
+            <size
+                android:width="48dp"
+                android:height="100dp" />
+        </shape>
+    </item>
+    <item >
+        <shape android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.4"
+            android:useLevel="false">
+            <gradient
+                android:centerColor="@android:color/holo_blue_bright"
+                android:centerY="0.50"
+                android:endColor="@android:color/holo_blue_dark"
+                android:startColor="@android:color/holo_blue_dark"
+                android:type="sweep" />
+
+        </shape>
+    </item>
+</layer-list>
+
