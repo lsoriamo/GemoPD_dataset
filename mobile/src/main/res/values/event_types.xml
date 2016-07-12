@@ -6,13 +6,21 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
     </string-array>
 
     <string-array name="event_names">
-        <item>On</item>
-        <item>Off</item>
-        <item>Discinesia</item>
-        <item>Esencial</item>
+        <item>Inicio On</item>
+        <item>Fin On</item>
+        <item>Inicio Off</item>
+        <item>Fin Off</item>
+        <item>Inicio Discinesia</item>
+        <item>Fin Discinesia</item>
+        <item>Temblor Esencial</item>
+        <item>Transición</item>
         <item>Otro</item>
     </string-array>
 </resources>
