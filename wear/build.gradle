@@ -16,8 +16,8 @@ android {
     buildToolsVersion "23.0.2"
     defaultConfig {
         applicationId "es.us.investigacion.parkinson"
-        minSdkVersion 22
-        targetSdkVersion 22
+        minSdkVersion 21
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
