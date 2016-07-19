@@ -189,7 +189,7 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             public void onClick(View view) {
                 if (recordReceived != null) {
                     Intent intent = new Intent(SessionInProgressActivity.this, RecordDetailActivity.class);
-                    intent.putExtra(RecordDataActivity.RECORD_ID, recordReceived.getParentId());
+                    intent.putExtra(RecordDataActivity.RECORD_ID, recordReceived.getId());
                     intent.putExtra(RecordDataActivity.RECORD_FROM_SESSION_IN_PROGRESS, true);
                     SessionInProgressActivity.this.startActivityForResult(intent, DETAIL_SESSION_RESULT);
                 } else {

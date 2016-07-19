@@ -153,7 +153,7 @@ public class RecordDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent viewEventsActivity = new Intent(RecordDetailActivity.this, SessionInProgressActivity.class);
-                viewEventsActivity.putExtra(RecordDataActivity.RECORD_ID, record.getParentId());
+                viewEventsActivity.putExtra(RecordDataActivity.RECORD_PARENT_ID, record.getParentId());
                 startActivity(viewEventsActivity);
             }
         });

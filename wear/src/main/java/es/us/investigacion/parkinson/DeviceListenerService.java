@@ -35,6 +35,7 @@ import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -64,8 +65,8 @@ public class DeviceListenerService extends WearableListenerService implements Se
     private static boolean sessionRunning = false;
     private static SharedPreferences sharedPref;
     private static FileOutputStream fOut;
+    private static BufferedOutputStream bufferOut;
     private static SensorManager mSensorManager;
-    private static Sensor mSensor;
     private static Date startTime;
     private static Timer timer;
     private static File file;
@@ -223,7 +224,7 @@ public class DeviceListenerService extends WearableListenerService implements Se
     private void saveEventInFile(String eventId) {
         if (isSessionRunning() && fOut != null) {
             try {
-                fOut.write((getString(R.string.event_value_prefix) + getString(R.string.delimiter) + eventId + "\n").getBytes());
+                fOut.write((getString(R.string.event_value_prefix) + ";" + eventId + "\n").getBytes());
             } catch (IOException e) {
             }
         }
@@ -236,8 +237,16 @@ public class DeviceListenerService extends WearableListenerService implements Se
             timer.purge();
             timer = null;
         }
-        if (mSensorManager != null && mSensor != null) {
-            mSensorManager.unregisterListener(this, mSensor);
+        if (mSensorManager != null) {
+            mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
+            mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR));
+            mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY));
+            mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE));
+            mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED));
+            mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
+            mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION));
+            mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR));
+
             new AsyncTask<Void, Void, Void>() {
 
                 @Override
@@ -293,7 +302,6 @@ public class DeviceListenerService extends WearableListenerService implements Se
         createNewTempFile();
 
         mSensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
-        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         if (sharedPref.getBoolean(getString(R.string.preferences_saved_autosync), false)) {
             timer = new Timer();
@@ -305,7 +313,15 @@ public class DeviceListenerService extends WearableListenerService implements Se
             };
             timer.schedule(timerTask, sharedPref.getInt(getString(R.string.preferences_saved_autosyncfreq), 15000), sharedPref.getInt(getString(R.string.preferences_saved_autosyncfreq), 15000));
         }
-        mSensorManager.registerListener(this, mSensor, sensorDelay);
+
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), sensorDelay);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR), sensorDelay);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY), sensorDelay);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), sensorDelay);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED), sensorDelay);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), sensorDelay);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION), sensorDelay);
+        mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR), sensorDelay);
         if (mGoogleApiClient != null && remoteNodes != null) {
             for (Node node : remoteNodes) {
                 Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), getString(R.string.path_prefix) + getString(R.string.session_started), new String(sharedPref.getString(getString(R.string.preferences_saved_username), "") + getString(R.string.delimiter) + Calendar.getInstance().getTimeInMillis() + getString(R.string.delimiter) + new String(sharedPref.getString(getString(R.string.preferences_saved_researcher), ""))).getBytes());
@@ -317,17 +333,53 @@ public class DeviceListenerService extends WearableListenerService implements Se
 
     private void createNewTempFile() {
         try {
+            if (fOut != null) {
+                bufferOut.close();
+                fOut.flush();
+                fOut.close();
+            }
             file = File.createTempFile(getString(R.string.path_prefix) + Calendar.getInstance().getTimeInMillis(), getString(R.string.temp_file_extension), getApplicationContext().getCacheDir());
             fOut = new FileOutputStream(file);
+            bufferOut = new BufferedOutputStream(fOut);
         } catch (IOException e) {
         }
     }
 
     public void onSensorChanged(SensorEvent event) {
-        String st = event.values[0] + "," + event.values[1] + "," + event.values[2] + "\n";
+        String st = "";
         try {
-            fOut.write(st.getBytes());
-        } catch (IOException e) {
+
+            switch (event.sensor.getType()) {
+                case Sensor.TYPE_ACCELEROMETER:
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_ACCELEROMETER + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + "\n";
+                    break;
+                case Sensor.TYPE_ROTATION_VECTOR:
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_ROTATION_VECTOR + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + ";" + event.values[3] + ";" + event.values[4] + "\n";
+                    break;
+                case Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR:
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + ";" + event.values[3] + ";" + event.values[4] + "\n";
+                    break;
+                case Sensor.TYPE_GRAVITY:
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_GRAVITY + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + "\n";
+                    break;
+                case Sensor.TYPE_GYROSCOPE:
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_GYROSCOPE + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + "\n";
+                    break;
+                case Sensor.TYPE_GYROSCOPE_UNCALIBRATED:
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_GYROSCOPE_UNCALIBRATED + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + ";" + event.values[3] + ";" + event.values[4] + ";" + event.values[5] + "\n";
+                    break;
+                case Sensor.TYPE_LIGHT:
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_LIGHT + ";" + event.values[0] + "\n";
+                    break;
+                case Sensor.TYPE_LINEAR_ACCELERATION:
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_LINEAR_ACCELERATION + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + "\n";
+                    break;
+                default:
+                    st = "";
+            }
+            if (!st.isEmpty())
+                bufferOut.write(st.getBytes());
+        } catch (Exception e) {
         }
     }
 
@@ -359,12 +411,6 @@ public class DeviceListenerService extends WearableListenerService implements Se
     }
 
     private void sendFileToPhone(final File file) {
-        if (fOut != null) {
-            try {
-                fOut.flush();
-            } catch (IOException e) {
-            }
-        }
         filesToSendPool.add(file.getAbsolutePath());
         createNewTempFile();
         sendFilesPool();

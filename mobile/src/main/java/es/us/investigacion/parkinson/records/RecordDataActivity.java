@@ -46,6 +46,7 @@ public class RecordDataActivity extends AppCompatActivity implements
     public static final String RECORD_PATIENT = "record_patient";
     public static final String RECORD_DATE = "record_date";
     public static final String RECORD_ID = "record_id";
+    public static final String RECORD_PARENT_ID = "record_parent_id";
     public static final String RECORD_FROM_SESSION_IN_PROGRESS = "from_session_in_progress";
     private SimpleDateFormat sDateFormat;
     private File file;

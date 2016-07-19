@@ -120,7 +120,8 @@ public class RecordsViewAdapter extends RecyclerView.Adapter<RecordsViewAdapter.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, RecordDetailActivity.class);
-                intent.putExtra("record_id", item.getParentId());
+                intent.putExtra(RecordDataActivity.RECORD_PARENT_ID, item.getParentId());
+                intent.putExtra(RecordDataActivity.RECORD_ID, item.getId());
                 context.startActivity(intent);
 
             }
