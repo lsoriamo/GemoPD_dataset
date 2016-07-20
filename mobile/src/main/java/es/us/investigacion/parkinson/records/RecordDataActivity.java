@@ -2,6 +2,7 @@ package es.us.investigacion.parkinson.records;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.hardware.Sensor;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -121,7 +122,7 @@ public class RecordDataActivity extends AppCompatActivity implements
         l.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
         l.setForm(Legend.LegendForm.LINE);
 
-        mChart.setVisibleXRangeMaximum(100f);
+        mChart.setVisibleXRangeMaximum(300f);
 
         // mChart.setAutoScaleMinMaxEnabled(true);
         // mChart.invalidate();
@@ -136,48 +137,60 @@ public class RecordDataActivity extends AppCompatActivity implements
 
         float minValue = Float.MAX_VALUE;
         float maxValue = Float.MIN_VALUE;
-        List<ArrayList<Entry>> yVals = new ArrayList<ArrayList<Entry>>();
-        List<String> xVals = new ArrayList<>();
-        Map<Integer, String> events = new HashMap<>();
+        Map<Integer,ArrayList<ArrayList<Entry>>> yVals = new HashMap<Integer, ArrayList<ArrayList<Entry>>>();
+        Map<Integer,List<String>> xVals = new HashMap<Integer, List<String>>();
+        Map<Integer,List<Pair<Integer, String>>> events = new HashMap<>();
         BufferedReader reader = null;
         String eventLine = getString(R.string.event_value_prefix);
-        String eventDelimiter = getString(R.string.delimiter);
+        String eventDelimiter = ";";
         try {
             reader = new BufferedReader(new FileReader(file));
             String currentLine;
-            int i = 0;
-            boolean first = true;
+            long initTime = 0;
             while ((currentLine = reader.readLine()) != null) {
                 if (!currentLine.contains(eventLine)) {
-                    String[] split = currentLine.split(",");
-                    for (int elem = 0; elem < split.length; elem++) {
-                        if (first) {
-                            yVals.add(new ArrayList<Entry>());
+                    String[] split = currentLine.split(";");
+                    Integer sensor = Integer.parseInt(split[1]);
+                    if (!yVals.containsKey(sensor)) {
+                        yVals.put(sensor, new ArrayList<ArrayList<Entry>>());
+                        xVals.put(sensor, new ArrayList<String>());
+                    }
+
+                    if (initTime == 0){
+                        initTime = Long.parseLong(split[0]);
+                    }
+
+                    for (int elem = 2; elem < split.length; elem++) {
+                        if (yVals.get(sensor).size() < elem - 1) {
+                            yVals.get(sensor).add(new ArrayList<Entry>());
                         }
                         float value = Float.parseFloat(split[elem]);
-                        yVals.get(elem).add(new Entry(value, i));
+                        yVals.get(sensor).get(elem - 2).add(new Entry(value, yVals.get(sensor).get(elem - 2).size() + 1));
 
                         if (value > maxValue)
                             maxValue = value;
                         if (value < minValue)
                             minValue = value;
                     }
-                    i++;
-                    xVals.add(Integer.toString(i));
-                    first = false;
+                    xVals.get(sensor).add(Long.toString(Math.round((Long.parseLong(split[0]) - initTime))));
                 } else {
                     String[] split = currentLine.split(eventDelimiter);
-                    events.put(i, split[1]);
+                    for (Integer key: yVals.keySet()){
+                        if (!events.containsKey(key)){
+                            events.put(key, new ArrayList<Pair<Integer, String>>());
+                        }
+                        events.get(key).add(new Pair<Integer, String>(yVals.get(key).get(0).size(), split[1]));
+                    }
                 }
             }
-            LineDataSet set1 = getLineDataSet(yVals.get(0), Color.BLACK, Color.BLACK, Color.WHITE, "Acc X");
-            LineDataSet set2 = getLineDataSet(yVals.get(1), Color.RED, Color.RED, Color.WHITE, "Acc Y");
-            LineDataSet set3 = getLineDataSet(yVals.get(2), Color.BLUE, Color.BLUE, Color.WHITE, "Acc Z");
+            LineDataSet set1 = getLineDataSet(yVals.get(Sensor.TYPE_ACCELEROMETER).get(0), Color.BLACK, Color.BLACK, Color.WHITE, "Acc X");
+            LineDataSet set2 = getLineDataSet(yVals.get(Sensor.TYPE_ACCELEROMETER).get(1), Color.RED, Color.RED, Color.WHITE, "Acc Y");
+            LineDataSet set3 = getLineDataSet(yVals.get(Sensor.TYPE_ACCELEROMETER).get(2), Color.BLUE, Color.BLUE, Color.WHITE, "Acc Z");
             ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
             dataSets.add(set1);
             dataSets.add(set2);
             dataSets.add(set3);
-            LineData data = new LineData(xVals, dataSets);
+            LineData data = new LineData(xVals.get(Sensor.TYPE_ACCELEROMETER), dataSets);
             mChart.setData(data);
 
             XAxis xAxis = mChart.getXAxis();
@@ -185,9 +198,9 @@ public class RecordDataActivity extends AppCompatActivity implements
             xAxis.enableGridDashedLine(10f, 10f, 0f);
             List<String> eventTypes = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.event_types)));
             String[] eventNames = getResources().getStringArray(R.array.event_names);
-            for (Map.Entry<Integer, String> event: events.entrySet()){
-                int pos = eventTypes.indexOf(event.getValue());
-                LimitLine eventLineChart = new LimitLine(event.getKey(), eventNames[pos]);
+            for (Pair<Integer, String> event : events.get(Sensor.TYPE_ACCELEROMETER)) {
+                int pos = eventTypes.indexOf(event.second);
+                LimitLine eventLineChart = new LimitLine(event.first, eventNames[pos]);
                 eventLineChart.setLineWidth(4f);
                 eventLineChart.enableDashedLine(10f, 10f, 0f);
                 eventLineChart.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);

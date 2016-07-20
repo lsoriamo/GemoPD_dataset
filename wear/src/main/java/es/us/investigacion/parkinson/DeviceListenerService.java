@@ -354,10 +354,10 @@ public class DeviceListenerService extends WearableListenerService implements Se
                     st = System.currentTimeMillis() + ";" + Sensor.TYPE_ACCELEROMETER + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + "\n";
                     break;
                 case Sensor.TYPE_ROTATION_VECTOR:
-                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_ROTATION_VECTOR + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + ";" + event.values[3] + ";" + event.values[4] + "\n";
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_ROTATION_VECTOR + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + ";" + event.values[3] + "\n";
                     break;
                 case Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR:
-                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + ";" + event.values[3] + ";" + event.values[4] + "\n";
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + ";" + event.values[3] + "\n";
                     break;
                 case Sensor.TYPE_GRAVITY:
                     st = System.currentTimeMillis() + ";" + Sensor.TYPE_GRAVITY + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + "\n";
@@ -366,7 +366,7 @@ public class DeviceListenerService extends WearableListenerService implements Se
                     st = System.currentTimeMillis() + ";" + Sensor.TYPE_GYROSCOPE + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + "\n";
                     break;
                 case Sensor.TYPE_GYROSCOPE_UNCALIBRATED:
-                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_GYROSCOPE_UNCALIBRATED + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + ";" + event.values[3] + ";" + event.values[4] + ";" + event.values[5] + "\n";
+                    st = System.currentTimeMillis() + ";" + Sensor.TYPE_GYROSCOPE_UNCALIBRATED + ";" + event.values[0] + ";" + event.values[1] + ";" + event.values[2] + ";" + event.values[3] + "\n";
                     break;
                 case Sensor.TYPE_LIGHT:
                     st = System.currentTimeMillis() + ";" + Sensor.TYPE_LIGHT + ";" + event.values[0] + "\n";
