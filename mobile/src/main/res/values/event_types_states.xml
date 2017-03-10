@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="event_types_estados">
+
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+
+    </string-array>
+
+    <string-array name="event_names_estados">
+
+        <item>OFF</item>
+        <item>Medicacion</item>
+        <item>Transición</item>
+        <item>ON</item>
+
+    </string-array>
+
+</resources>

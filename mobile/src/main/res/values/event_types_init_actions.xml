@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="event_types_inicio_acciones">
+
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+
+
+    </string-array>
+
+    <string-array name="event_names_inicio_acciones">
+        <item>Inicio Habla</item>
+        <item>Inicio Finger Tapping</item>
+        <item>Inicio ProSup</item>
+        <item>Inicio Marcha</item>
+        <item>Giro</item>
+        <item>Freezing</item>
+        <item>Inicio EstiraBrazos</item>
+        <item>Inicio DedoNariz</item>
+        <item>Inicio Reposo</item>
+
+
+    </string-array>
+</resources>

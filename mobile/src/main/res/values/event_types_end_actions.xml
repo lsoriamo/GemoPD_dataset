@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="event_types_fin_acciones">
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+
+
+
+
+    </string-array>
+
+    <string-array name="event_names_fin_acciones">
+        <item>Fin Habla</item>
+        <item>Fin Finger Tapping</item>
+        <item>Fin ProSup</item>
+        <item>Fin Marcha</item>
+        <item>Fin EstiraBrazos</item>
+        <item>Fin DedoNariz</item>
+        <item>Fin Reposo</item>
+
+
+    </string-array>
+</resources>

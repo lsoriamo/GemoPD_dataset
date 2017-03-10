@@ -50,7 +50,10 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
     private LinearLayout noEventsLayout;
     private LinearLayout startSessionAuxLayout;
     private LinearLayout linearPleaseWait;
-    private FloatingActionMenu newEvent;
+    private FloatingActionMenu newEventOne;
+    private FloatingActionMenu newEventTwo;
+    private FloatingActionMenu newEventThree;
+    private FloatingActionMenu newEventFour;
     private FloatingActionButton startSession;
     private TextView noEventsTextView;
     private FloatingActionButton saveSession;
@@ -92,7 +95,12 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
 
         tvChronoHint = (TextView) findViewById(R.id.tvChronoHint);
         chrono = (Chronometer) findViewById(R.id.chrono);
-        newEvent = (FloatingActionMenu) findViewById(R.id.newEvent);
+
+        newEventOne = (FloatingActionMenu) findViewById(R.id.newEventOne);
+        newEventTwo = (FloatingActionMenu) findViewById(R.id.newEventTwo);
+        newEventThree = (FloatingActionMenu) findViewById(R.id.newEventThree);
+        newEventFour = (FloatingActionMenu) findViewById(R.id.newEventFour);
+
         startSessionAuxLayout = (LinearLayout) findViewById(R.id.startSessionAuxLayout);
         linearPleaseWait = (LinearLayout) findViewById(R.id.frame_please_wait);
         startSession = (FloatingActionButton) findViewById(R.id.startSession);
@@ -104,10 +112,20 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
         imageNoEvents = (ImageView) findViewById(R.id.image_no_events);
         pleaseWaitText = (TextView) findViewById(R.id.please_wait_text);
 
-        final String[] eventTypes = getResources().getStringArray(R.array.event_types);
-        final String[] eventNames = getResources().getStringArray(R.array.event_names);
-        newEvent.setClosedOnTouchOutside(true);
-        newEvent.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+        final String[] eventTypesOne = getResources().getStringArray(R.array.event_types_inicio_acciones);
+        final String[] eventNamesOne = getResources().getStringArray(R.array.event_names_inicio_acciones);
+
+        final String[] eventTypesTwo = getResources().getStringArray(R.array.event_types_fin_acciones);
+        final String[] eventNamesTwo = getResources().getStringArray(R.array.event_names_fin_acciones);
+
+        final String[] eventTypesThree = getResources().getStringArray(R.array.event_types_temblor);
+        final String[] eventNamesThree = getResources().getStringArray(R.array.event_names_temblor);
+
+        final String[] eventTypesFour = getResources().getStringArray(R.array.event_types_estados);
+        final String[] eventNamesFour = getResources().getStringArray(R.array.event_names_estados);
+
+        newEventOne.setClosedOnTouchOutside(true);
+        newEventOne.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
             @Override
             public void onMenuToggle(boolean opened) {
                 if (opened) {
@@ -116,7 +134,7 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
                     frameLayout.setOnTouchListener(new View.OnTouchListener() {
                         @Override
                         public boolean onTouch(View v, MotionEvent event) {
-                            newEvent.close(true);
+                            newEventOne.close(true);
                             frameLayout.setVisibility(View.GONE);
                             return true;
                         }
@@ -129,25 +147,156 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             }
         });
 
-        for (int i = 0; i < eventTypes.length; i++) {
-            final com.github.clans.fab.FloatingActionButton eventButton = new com.github.clans.fab.FloatingActionButton(this);
-            eventButton.setButtonSize(FloatingActionButton.SIZE_MINI);
-            eventButton.setLabelText(eventNames[i]);
-            eventButton.setImageResource(R.drawable.fab_add);
-            eventButton.setColorNormalResId(android.R.color.holo_green_dark);
-            eventButton.setColorPressedResId(android.R.color.holo_green_light);
-            newEvent.addMenuButton(eventButton);
+        newEventTwo.setClosedOnTouchOutside(true);
+        newEventTwo.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+            @Override
+            public void onMenuToggle(boolean opened) {
+                if (opened) {
+                    frameLayout.setVisibility(View.VISIBLE);
+                    frameLayout.getBackground().setAlpha(140);
+                    frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            newEventTwo.close(true);
+                            frameLayout.setVisibility(View.GONE);
+                            return true;
+                        }
+                    });
+                } else {
+                    frameLayout.getBackground().setAlpha(0);
+                    frameLayout.setOnTouchListener(null);
+                    frameLayout.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        newEventThree.setClosedOnTouchOutside(true);
+        newEventThree.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+            @Override
+            public void onMenuToggle(boolean opened) {
+                if (opened) {
+                    frameLayout.setVisibility(View.VISIBLE);
+                    frameLayout.getBackground().setAlpha(140);
+                    frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            newEventThree.close(true);
+                            frameLayout.setVisibility(View.GONE);
+                            return true;
+                        }
+                    });
+                } else {
+                    frameLayout.getBackground().setAlpha(0);
+                    frameLayout.setOnTouchListener(null);
+                    frameLayout.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
+        newEventFour.setClosedOnTouchOutside(true);
+        newEventFour.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+            @Override
+            public void onMenuToggle(boolean opened) {
+                if (opened) {
+                    frameLayout.setVisibility(View.VISIBLE);
+                    frameLayout.getBackground().setAlpha(140);
+                    frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            newEventOne.close(true);
+                            frameLayout.setVisibility(View.GONE);
+                            return true;
+                        }
+                    });
+                } else {
+                    frameLayout.getBackground().setAlpha(0);
+                    frameLayout.setOnTouchListener(null);
+                    frameLayout.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        for (int i = 0; i < eventTypesOne.length; i++) {
+            final com.github.clans.fab.FloatingActionButton eventButtonOne = new com.github.clans.fab.FloatingActionButton(this);
+            eventButtonOne.setButtonSize(FloatingActionButton.SIZE_MINI);
+            eventButtonOne.setLabelText(eventNamesOne[i]);
+            eventButtonOne.setImageResource(R.drawable.fab_add);
+            eventButtonOne.setColorNormalResId(android.R.color.holo_green_dark);
+            eventButtonOne.setColorPressedResId(android.R.color.holo_green_light);
+            newEventOne.addMenuButton(eventButtonOne);
             final int pos = i;
-            eventButton.setOnClickListener(new View.OnClickListener() {
+            eventButtonOne.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    WearManager.sendEventToWear(SessionInProgressActivity.this, eventTypes[pos]);
-                    newEvent.close(true);
-                    EventInProgress event = new EventInProgress(eventTypes[pos], eventNames[pos], SystemClock.elapsedRealtime() - chrono.getBase(), Calendar.getInstance().getTimeInMillis());
+                    WearManager.sendEventToWear(SessionInProgressActivity.this, eventTypesOne[pos]);
+                    newEventOne.close(true);
+                    EventInProgress event = new EventInProgress(eventTypesOne[pos], eventNamesOne[pos], SystemClock.elapsedRealtime() - chrono.getBase(), Calendar.getInstance().getTimeInMillis());
                     event.save();
                 }
             });
         }
+
+        for (int i = 0; i < eventTypesTwo.length; i++) {
+            final com.github.clans.fab.FloatingActionButton eventButtonTwo = new com.github.clans.fab.FloatingActionButton(this);
+            eventButtonTwo.setButtonSize(FloatingActionButton.SIZE_MINI);
+            eventButtonTwo.setLabelText(eventNamesTwo[i]);
+            eventButtonTwo.setImageResource(R.drawable.fab_add);
+            eventButtonTwo.setColorNormalResId(android.R.color.holo_green_dark);
+            eventButtonTwo.setColorPressedResId(android.R.color.holo_green_light);
+            newEventTwo.addMenuButton(eventButtonTwo);
+            final int pos = i;
+            eventButtonTwo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WearManager.sendEventToWear(SessionInProgressActivity.this, eventTypesTwo[pos]);
+                    newEventTwo.close(true);
+                    EventInProgress event = new EventInProgress(eventTypesTwo[pos], eventNamesTwo[pos], SystemClock.elapsedRealtime() - chrono.getBase(), Calendar.getInstance().getTimeInMillis());
+                    event.save();
+                }
+            });
+        }
+
+        for (int i = 0; i < eventTypesThree.length; i++) {
+            final com.github.clans.fab.FloatingActionButton eventButtonThree = new com.github.clans.fab.FloatingActionButton(this);
+            eventButtonThree.setButtonSize(FloatingActionButton.SIZE_MINI);
+            eventButtonThree.setLabelText(eventNamesThree[i]);
+            eventButtonThree.setImageResource(R.drawable.fab_add);
+            eventButtonThree.setColorNormalResId(android.R.color.holo_green_dark);
+            eventButtonThree.setColorPressedResId(android.R.color.holo_green_light);
+            newEventThree.addMenuButton(eventButtonThree);
+            final int pos = i;
+            eventButtonThree.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WearManager.sendEventToWear(SessionInProgressActivity.this, eventTypesThree[pos]);
+                    newEventThree.close(true);
+                    EventInProgress event = new EventInProgress(eventTypesThree[pos], eventNamesThree[pos], SystemClock.elapsedRealtime() - chrono.getBase(), Calendar.getInstance().getTimeInMillis());
+                    event.save();
+                }
+            });
+        }
+
+        for (int i = 0; i < eventTypesFour.length; i++) {
+            final com.github.clans.fab.FloatingActionButton eventButtonFour = new com.github.clans.fab.FloatingActionButton(this);
+            eventButtonFour.setButtonSize(FloatingActionButton.SIZE_MINI);
+            eventButtonFour.setLabelText(eventNamesFour[i]);
+            eventButtonFour.setImageResource(R.drawable.fab_add);
+            eventButtonFour.setColorNormalResId(android.R.color.holo_green_dark);
+            eventButtonFour.setColorPressedResId(android.R.color.holo_green_light);
+            newEventFour.addMenuButton(eventButtonFour);
+            final int pos = i;
+            eventButtonFour.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WearManager.sendEventToWear(SessionInProgressActivity.this, eventTypesFour[pos]);
+                    newEventFour.close(true);
+                    EventInProgress event = new EventInProgress(eventTypesFour[pos], eventNamesFour[pos], SystemClock.elapsedRealtime() - chrono.getBase(), Calendar.getInstance().getTimeInMillis());
+                    event.save();
+                }
+            });
+        }
+
 
         if (sessionId == -1) {
             adapter = new SessionInProgressAdapter(SessionInProgressActivity.this);
@@ -317,7 +466,9 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             startSession.setVisibility(View.INVISIBLE);
             stopSession.setVisibility(View.VISIBLE);
             startSessionAuxLayout.setVisibility(View.GONE);
-            newEvent.setVisibility(View.VISIBLE);
+            newEventOne.setVisibility(View.VISIBLE);
+            newEventTwo.setVisibility(View.VISIBLE);
+            newEventThree.setVisibility(View.VISIBLE);
             noEventsTextView.setText(R.string.no_events_available_1);
             linearPleaseWait.setVisibility(View.GONE);
             updateEmptySpace();
@@ -331,7 +482,9 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             startSession.setVisibility(View.INVISIBLE);
             stopSession.setVisibility(View.GONE);
             startSessionAuxLayout.setVisibility(View.GONE);
-            newEvent.setVisibility(View.GONE);
+            newEventOne.setVisibility(View.GONE);
+            newEventTwo.setVisibility(View.GONE);
+            newEventThree.setVisibility(View.GONE);
             noEventsTextView.setText(R.string.no_events_available_4);
             linearPleaseWait.setVisibility(View.GONE);
             updateEmptySpace();
@@ -346,7 +499,9 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             tvChronoHint.setVisibility(View.GONE);
             saveSession.setVisibility(View.GONE);
             stopSession.setVisibility(View.GONE);
-            newEvent.setVisibility(View.GONE);
+            newEventOne.setVisibility(View.GONE);
+            newEventTwo.setVisibility(View.GONE);
+            newEventThree.setVisibility(View.GONE);
             if (getSupportActionBar() != null)
                 getSupportActionBar().setTitle(R.string.title_activity_session_new);
 
@@ -376,7 +531,9 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             startSession.setVisibility(View.INVISIBLE);
             stopSession.setVisibility(View.VISIBLE);
             startSessionAuxLayout.setVisibility(View.GONE);
-            newEvent.setVisibility(View.VISIBLE);
+            newEventOne.setVisibility(View.VISIBLE);
+            newEventTwo.setVisibility(View.VISIBLE);
+            newEventThree.setVisibility(View.VISIBLE);
             noEventsTextView.setText(R.string.no_events_available_1);
             linearPleaseWait.setVisibility(View.GONE);
             if (getSupportActionBar() != null)

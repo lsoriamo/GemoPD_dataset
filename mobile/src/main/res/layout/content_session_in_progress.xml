@@ -16,8 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:textColor="@color/common_plus_signin_btn_text_dark_disabled"
-        android:textSize="30dp" />
+        android:textColor="@color/common_google_signin_btn_text_dark_disabled"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvChronoHint"
@@ -26,8 +26,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:text="@string/session_finished_view"
-        android:textColor="@color/common_plus_signin_btn_text_dark_disabled"
-        android:textSize="25dp" />
+        android:textColor="@color/common_google_signin_btn_text_dark_disabled"
+        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,6 +55,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:contentDescription="@string/session_started"
             android:id="@+id/image_no_events"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -86,19 +87,19 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@android:color/darker_gray" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/startSessionAux"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_media_play"
-                    app:backgroundTint="@android:color/holo_green_dark"
-                    app:borderWidth="0dp"
-                    app:layout_anchor="@id/app_bar"
-                    app:layout_anchorGravity="bottom|end" />
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/startSessionAux"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@android:drawable/ic_media_play"
+                        app:backgroundTint="@android:color/holo_green_dark"
+                        app:borderWidth="0dp"
+                        app:layout_anchor="@id/app_bar"
+                        app:layout_anchorGravity="bottom|end" />
             </LinearLayout>
 
             <TextView

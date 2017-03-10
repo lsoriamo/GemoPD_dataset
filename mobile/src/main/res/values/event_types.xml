@@ -10,6 +10,7 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
     </string-array>
 
     <string-array name="event_names">
@@ -21,6 +22,7 @@
         <item>Fin Discinesia</item>
         <item>Temblor Esencial</item>
         <item>Transición</item>
-        <item>Otro</item>
+        <item>Prueba</item>
+        <item>Prueba2</item>
     </string-array>
 </resources>
