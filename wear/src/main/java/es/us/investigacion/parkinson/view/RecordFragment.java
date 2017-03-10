@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.support.annotation.Nullable;
 import android.support.wearable.activity.ConfirmationActivity;
 import android.support.wearable.view.DelayedConfirmationView;
@@ -19,6 +20,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import es.us.investigacion.parkinson.DeviceListenerService;
+import es.us.investigacion.parkinson.GemoApplication;
 import es.us.investigacion.parkinson.R;
 import es.us.investigacion.parkinson.database.Record;
 
@@ -55,6 +57,8 @@ public class RecordFragment extends Fragment implements MainActivity.AmbientList
             @Override
             public void onClick(View view) {
                 if (DeviceListenerService.isSessionRunning() && isQuestionStop) {
+                    if (GemoApplication.wakeLock.isHeld())
+                        GemoApplication.wakeLock.release();
                     finishSession();
                     clickAgainTimer.cancel();
                     clickAgainTimer.purge();
@@ -74,6 +78,7 @@ public class RecordFragment extends Fragment implements MainActivity.AmbientList
                         }
                     }, 5000);
                 }else{
+                    GemoApplication.wakeLock.acquire();
                     mainLayout.setVisibility(View.GONE);
                     delayed_confirmation_layout.setVisibility(View.VISIBLE);
                     delayed_confirmation.setTotalTimeMs(4000);

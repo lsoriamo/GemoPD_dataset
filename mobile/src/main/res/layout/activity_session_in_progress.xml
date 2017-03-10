@@ -40,6 +40,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/startSession"
+        android:translationZ="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -53,6 +54,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/stopSession"
+        android:translationZ="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -66,6 +68,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/saveSession"
+        android:translationZ="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -126,10 +129,9 @@
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/newEventOne"
-        android:translationZ="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/fab_margin"
+        android:translationZ="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:src="@android:drawable/ic_menu_add"
         app:borderWidth="0dp"
@@ -139,8 +141,8 @@
         app:menu_labels_style="@style/menu_labels_style"
         fab:menu_animationDelayPerItem="0"
         fab:menu_colorNormal="@android:color/holo_blue_dark"
-        fab:menu_colorPressed="@android:color/holo_orange_light"
-        fab:menu_colorRipple="@android:color/holo_orange_light"
+        fab:menu_colorPressed="@android:color/holo_blue_light"
+        fab:menu_colorRipple="@android:color/holo_blue_light"
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_hideAnimation="@anim/jump_to_down"
         fab:menu_labels_showAnimation="@anim/jump_from_down"
@@ -149,10 +151,10 @@
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/newEventTwo"
         android:translationZ="7dp"
-        android:layout_width="294dp"
-        android:layout_height="522dp"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_gravity="bottom|center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="70dp"
         android:src="@android:drawable/ic_menu_add"
         app:borderWidth="0dp"
         app:menu_backgroundColor="#ccffffff"
@@ -161,45 +163,20 @@
         app:menu_labels_style="@style/menu_labels_style"
         fab:menu_animationDelayPerItem="0"
         fab:menu_colorNormal="@android:color/holo_green_dark"
-        fab:menu_colorPressed="@android:color/holo_orange_light"
-        fab:menu_colorRipple="@android:color/holo_orange_light"
+        fab:menu_colorPressed="@android:color/holo_green_light"
+        fab:menu_colorRipple="@android:color/holo_green_light"
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_hideAnimation="@anim/jump_to_down"
         fab:menu_labels_showAnimation="@anim/jump_from_down"
-        fab:menu_shadowColor="#444" />
-
-
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/newEventFour"
-        android:translationZ="7dp"
-        android:layout_width="210dp"
-        android:layout_height="149dp"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_gravity="bottom|end"
-        android:src="@android:drawable/ic_menu_add"
-        app:borderWidth="0dp"
-        app:menu_backgroundColor="#ccffffff"
-        app:menu_labels_position="left"
-        app:menu_openDirection="up"
-        app:menu_labels_style="@style/menu_labels_style"
-        fab:menu_animationDelayPerItem="0"
-        fab:menu_colorNormal="@android:color/holo_red_dark"
-        fab:menu_colorPressed="@android:color/holo_orange_light"
-        fab:menu_colorRipple="@android:color/holo_orange_light"
-        fab:menu_labels_ellipsize="end"
-        fab:menu_labels_hideAnimation="@anim/jump_to_down"
-        fab:menu_labels_showAnimation="@anim/jump_from_down"
-        fab:menu_shadowColor="#444"
-        app:layout_anchor="@+id/newEventOne"
-        app:layout_anchorGravity="top|left" />
+        fab:menu_shadowColor="#444"/>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/newEventThree"
         android:translationZ="7dp"
-        android:layout_width="210dp"
-        android:layout_height="149dp"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_gravity="center_vertical|end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="140dp"
         android:src="@android:drawable/ic_menu_add"
         app:borderWidth="0dp"
         app:menu_backgroundColor="#ccffffff"
@@ -213,8 +190,28 @@
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_hideAnimation="@anim/jump_to_down"
         fab:menu_labels_showAnimation="@anim/jump_from_down"
-        fab:menu_shadowColor="#444"
-        app:layout_anchor="@+id/newEventOne"
-        app:layout_anchorGravity="bottom|left" />
+        fab:menu_shadowColor="#444"/>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/newEventFour"
+        android:translationZ="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="210dp"
+        android:src="@android:drawable/ic_menu_add"
+        app:borderWidth="0dp"
+        app:menu_backgroundColor="#ccffffff"
+        app:menu_labels_position="left"
+        app:menu_openDirection="up"
+        app:menu_labels_style="@style/menu_labels_style"
+        fab:menu_animationDelayPerItem="0"
+        fab:menu_colorNormal="@android:color/holo_red_dark"
+        fab:menu_colorPressed="@android:color/holo_red_light"
+        fab:menu_colorRipple="@android:color/holo_red_light"
+        fab:menu_labels_ellipsize="end"
+        fab:menu_labels_hideAnimation="@anim/jump_to_down"
+        fab:menu_labels_showAnimation="@anim/jump_from_down"
+        fab:menu_shadowColor="#444"/>
 
 </android.support.design.widget.CoordinatorLayout>

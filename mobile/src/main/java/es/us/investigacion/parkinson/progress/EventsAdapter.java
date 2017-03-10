@@ -36,7 +36,6 @@ import java.util.Date;
 import es.us.investigacion.parkinson.R;
 import es.us.investigacion.parkinson.data.AuditEntity;
 import es.us.investigacion.parkinson.data.Event;
-import es.us.investigacion.parkinson.data.Event_Table;
 
 /**
  * Created by LuisMiguel on 24/06/2016.

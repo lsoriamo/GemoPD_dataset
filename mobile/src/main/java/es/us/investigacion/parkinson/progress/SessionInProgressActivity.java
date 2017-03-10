@@ -204,7 +204,7 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
                     frameLayout.setOnTouchListener(new View.OnTouchListener() {
                         @Override
                         public boolean onTouch(View v, MotionEvent event) {
-                            newEventOne.close(true);
+                            newEventFour.close(true);
                             frameLayout.setVisibility(View.GONE);
                             return true;
                         }
@@ -469,6 +469,7 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             newEventOne.setVisibility(View.VISIBLE);
             newEventTwo.setVisibility(View.VISIBLE);
             newEventThree.setVisibility(View.VISIBLE);
+            newEventFour.setVisibility(View.VISIBLE);
             noEventsTextView.setText(R.string.no_events_available_1);
             linearPleaseWait.setVisibility(View.GONE);
             updateEmptySpace();
@@ -485,6 +486,7 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             newEventOne.setVisibility(View.GONE);
             newEventTwo.setVisibility(View.GONE);
             newEventThree.setVisibility(View.GONE);
+            newEventFour.setVisibility(View.GONE);
             noEventsTextView.setText(R.string.no_events_available_4);
             linearPleaseWait.setVisibility(View.GONE);
             updateEmptySpace();
@@ -502,6 +504,7 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             newEventOne.setVisibility(View.GONE);
             newEventTwo.setVisibility(View.GONE);
             newEventThree.setVisibility(View.GONE);
+            newEventFour.setVisibility(View.GONE);
             if (getSupportActionBar() != null)
                 getSupportActionBar().setTitle(R.string.title_activity_session_new);
 
@@ -534,6 +537,7 @@ public class SessionInProgressActivity extends AppCompatActivity implements Wear
             newEventOne.setVisibility(View.VISIBLE);
             newEventTwo.setVisibility(View.VISIBLE);
             newEventThree.setVisibility(View.VISIBLE);
+            newEventFour.setVisibility(View.VISIBLE);
             noEventsTextView.setText(R.string.no_events_available_1);
             linearPleaseWait.setVisibility(View.GONE);
             if (getSupportActionBar() != null)

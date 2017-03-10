@@ -57,7 +57,7 @@ import es.us.investigacion.parkinson.view.MainActivity;
  * Created by LuisMiguel on 25/06/2016.
  */
 public class DeviceListenerService extends WearableListenerService implements SensorEventListener {
-    private static final int sensorDelay = SensorManager.SENSOR_DELAY_FASTEST;
+    private static final int sensorDelay = 20;//SensorManager.SENSOR_DELAY_NORMAL;
     public static GoogleApiClient mGoogleApiClient;
     public static Node localNode;
     public static List<Node> remoteNodes;
