@@ -8,7 +8,7 @@ android {
         config {
             keyAlias 'luismi'
             keyPassword 'luismi'
-            storeFile file('C:/Users/LuisMiguel/.android/debug.keystore')
+            storeFile file('C:/Users/Luismi/.android/debug.keystore')
             storePassword 'luismi'
         }
     }
@@ -34,12 +34,11 @@ android {
 
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     wearApp project(':wear')
     apt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
-    // sql-cipher database encryption (optional)
     compile "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
     wearApp project(':wear')
     compile 'com.android.support:appcompat-v7:25.2.0'
@@ -52,6 +51,8 @@ dependencies {
     compile 'com.github.clans:fab:1.6.4'
     compile 'com.android.support:recyclerview-v7:25.2.0'
     compile 'com.google.android.gms:play-services-gcm:10.2.0'
-    compile 'com.google.android.gms:play-services:10.2.0'
+    //compile 'com.google.android.gms:play-services:10.2.0'
     compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.android.gms:play-services-ads:10.2.0'
+    compile 'com.google.android.gms:play-services-identity:10.2.0'
 }

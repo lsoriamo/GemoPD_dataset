@@ -237,6 +237,10 @@ public class DeviceListenerService extends WearableListenerService implements Se
             timer.purge();
             timer = null;
         }
+
+        if (GemoApplication.wakeLock.isHeld())
+            GemoApplication.wakeLock.release();
+
         if (mSensorManager != null) {
             mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
             mSensorManager.unregisterListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR));
@@ -300,7 +304,7 @@ public class DeviceListenerService extends WearableListenerService implements Se
         sessionRunning = true;
         startTime = Calendar.getInstance().getTime();
         createNewTempFile();
-
+        GemoApplication.wakeLock.acquire();
         mSensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
 
         if (sharedPref.getBoolean(getString(R.string.preferences_saved_autosync), false)) {
