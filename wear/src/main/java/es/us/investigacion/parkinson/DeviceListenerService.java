@@ -338,10 +338,11 @@ public class DeviceListenerService extends WearableListenerService implements Se
                 fOut.flush();
                 fOut.close();
             }
-            file = File.createTempFile(getString(R.string.path_prefix) + Calendar.getInstance().getTimeInMillis(), getString(R.string.temp_file_extension), getApplicationContext().getCacheDir());
+            file = new File(getApplicationContext().getFilesDir(), getString(R.string.path_prefix) + Calendar.getInstance().getTimeInMillis() + "." + getString(R.string.temp_file_extension));
             fOut = new FileOutputStream(file);
             bufferOut = new BufferedOutputStream(fOut);
         } catch (IOException e) {
+            int a = 2;
         }
     }
 

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GemoPD.iml" filepath="$PROJECT_DIR$/GemoPD.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Parkinson.iml" filepath="$PROJECT_DIR$/Parkinson.iml" />
+      <module fileurl="file://C:\Users\Luismi\OneDrive - UNIVERSIDAD DE SEVILLA\Proyectos\IBIS\Acelerometria\GemoPD_dataset\GemoPD.iml" filepath="C:\Users\Luismi\OneDrive - UNIVERSIDAD DE SEVILLA\Proyectos\IBIS\Acelerometria\GemoPD_dataset\GemoPD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GemoPD_dataset.iml" filepath="$PROJECT_DIR$/GemoPD_dataset.iml" />
+      <module fileurl="file://C:\Users\Luismi\OneDrive - UNIVERSIDAD DE SEVILLA\Proyectos\IBIS\Acelerometria\GemoPD_dataset\Parkinson.iml" filepath="C:\Users\Luismi\OneDrive - UNIVERSIDAD DE SEVILLA\Proyectos\IBIS\Acelerometria\GemoPD_dataset\Parkinson.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/wear/wear.iml" filepath="$PROJECT_DIR$/wear/wear.iml" />
     </modules>
