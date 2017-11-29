@@ -8,12 +8,12 @@ android {
         config {
             keyAlias 'luismi'
             keyPassword 'luismi'
-            storeFile file('C:/Users/LuisMiguel/.android/debug.keystore')
+            storeFile file('C:/Users/Luismi/.android/debug.keystore')
             storePassword 'luismi'
         }
     }
     compileSdkVersion 25
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '25.0.2'
     defaultConfig {
         applicationId "es.us.investigacion.parkinson"
         minSdkVersion 21
@@ -30,11 +30,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.android.support:wearable:2.0.0'
     provided 'com.google.android.wearable:wearable:2.0.0'
     compile 'com.google.android.gms:play-services-wearable:10.2.0'
-    compile 'com.android.support:support-v4:25.2.0'
     apt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
